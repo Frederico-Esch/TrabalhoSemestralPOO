@@ -2,6 +2,7 @@ package Views;
 
 import Models.Midia;
 import Models.Quadrinho;
+import Models.Tags;
 import Utils.ResourceManager;
 
 import javax.swing.*;
@@ -10,8 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 
 public class MenuHome extends JFrame {
@@ -53,6 +53,10 @@ public class MenuHome extends JFrame {
 
         verTabela.addActionListener(l->{
             new TabelaDeMidia(data);
+        });
+
+        adicionarMidia.addActionListener(l->{
+            new AdicionarMidia(data);
         });
 
         salvarDados.addActionListener(l->{

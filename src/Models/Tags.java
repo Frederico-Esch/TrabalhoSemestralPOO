@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public enum Tags {
     DC("DC", 0),
     Marvel("Marvel", 1),
@@ -31,4 +34,5 @@ public enum Tags {
     public String toString() {
         return key;
     }
+
 }

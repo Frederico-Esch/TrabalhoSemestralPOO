@@ -38,8 +38,8 @@ public class TabelaDeMidia extends JFrame {
 
             var cor = switch (midia.getState()){
                 case TO_READ -> Color.red;
-                case PROGRESS -> Color.yellow;
-                case FINISHED -> Color.green;
+                case PROGRESS -> new Color(250, 200, 0);
+                case FINISHED -> new Color(10, 175, 10);
             };
             label = new JLabel(midia.getStateToString(), JLabel.CENTER);
             label.setForeground(cor);

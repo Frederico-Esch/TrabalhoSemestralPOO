@@ -25,9 +25,9 @@ public class Quadrinho extends Midia{
         }
     }
 
-    public String getLink(String lugarDisponivel) throws Exception{
+    public String getLink(String lugarDisponivel) {
         var result = links.get(lugarDisponivel);
-        if(result == null) throw new Exception("Este Link não existe");
+        if(result == null) result = "Sem link";
         return result;
     }
 
