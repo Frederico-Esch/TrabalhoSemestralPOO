@@ -24,4 +24,8 @@ public class ResourceManager {
             return (ArrayList<Midia>) ois.readObject();
         }
     }
+
+    public static String getFilename() {
+        return filename;
+    }
 }

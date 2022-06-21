@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.io.File;
 import java.util.*;
 import java.util.List;
 
@@ -20,6 +21,12 @@ public class MenuHome extends JFrame {
 
     MenuHome(){
         data = new ArrayList<>();
+        try{
+            var file = new File(ResourceManager.getFilename());
+            if(file.exists()) data = ResourceManager.load();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         setTitle("Home");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -49,7 +56,7 @@ public class MenuHome extends JFrame {
         JButton verArvore = new JButton("Ver árvore de conteúdo");
         JButton adicionarMidia = new JButton("Adicionar Mídia");
         JButton salvarDados = new JButton("Salvar dados");
-        JButton carregarDados = new JButton("Carregar dados");
+        //JButton carregarDados = new JButton("Carregar dados");
 
         verTabela.addActionListener(l->{
             new TabelaDeMidia(data);
@@ -67,14 +74,6 @@ public class MenuHome extends JFrame {
             }
         });
 
-        carregarDados.addActionListener(l->{
-            try{
-                data = ResourceManager.load();
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
-        });
-
         add(verTabela, c);
         c.gridy++;
         add(verArvore, c);
@@ -82,8 +81,6 @@ public class MenuHome extends JFrame {
         add(adicionarMidia, c);
         c.gridy++;
         add(salvarDados,c);
-        c.gridy++;
-        add(carregarDados, c);
 
         setVisible(true);
     }
