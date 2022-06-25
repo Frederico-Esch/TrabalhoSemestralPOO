@@ -33,8 +33,12 @@ public class AdicionarMidia extends JFrame {
         serie.setEnabled(false);
 
         quadrinho.addActionListener(l -> {
-            data.add(new Quadrinho("", new ArrayList<>()));
-            new ExibirEEditarMidia(data.get(data.size()-1), false);
+            //data.add(new Quadrinho("", new ArrayList<>()));
+            var novoQuadrinho = new Quadrinho("", new ArrayList<>());
+            new ExibirEEditarMidia(novoQuadrinho, () -> {
+                data.add(novoQuadrinho);
+                return null;
+            });
             dispose();
         });
 

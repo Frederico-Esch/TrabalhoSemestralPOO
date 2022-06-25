@@ -15,9 +15,11 @@ import java.rmi.dgc.VMID;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
 public class ExibirEEditarMidia extends JFrame {
+    private Callable<Void> funcao = null;
     private boolean isEditing = false;
     private Midia source;
 
@@ -388,6 +390,15 @@ public class ExibirEEditarMidia extends JFrame {
                 }
             }
 
+            if(this.funcao != null){
+                try {
+                    this.funcao.call();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            this.funcao = null;
+
             setupExibir();
         });
 
@@ -463,9 +474,9 @@ public class ExibirEEditarMidia extends JFrame {
         setupExibir();
     }
 
-    public ExibirEEditarMidia(Midia midia, boolean exibir){
+    public ExibirEEditarMidia(Midia midia, Callable<Void> funcao){
         source = midia;
-        if(exibir) setupExibir();
-        else setupEditar();
+        this.funcao = funcao;
+        setupEditar();
     }
 }
